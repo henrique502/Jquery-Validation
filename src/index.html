@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title> jquery validation </title>
+
+<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="jquery.validate.js"></script>
+
+<script src="plugins/cpfBR.js"></script>
+<script src="plugins/postalcodeBR.js"></script>
+<script src="plugins/telefoneBR.js"></script>
+
+</head>
+<body>
+
+<form id="formulario" method="post" action="?">
+	<p><input type="email" name="email" required="required" placeholder="E-mail"></p>
+	<p><input type="text" name="cpf" placeholder="CPF"></p>
+	<p><input type="text" name="telefone" required="required" placeholder="Telfone:"></p>
+	<p><input type="text" name="cep" required="required" placeholder="CEP:"></p>
+	
+	<br><br>
+	<input type="submit">
+
+</form>
+
+<script type="text/javascript">
+	$(function(){
+		$('#formulario').validate({
+			rules: {
+				cpf: {
+					required: false,
+					cpfBR: true
+				},
+				telefone: {
+					required: true,
+					telefoneBR: true
+				},
+				cep: {
+					required: true,
+					postalcodeBR: true
+				}
+			}
+		});
+	});
+</script>
+
+</body>
+</html>
